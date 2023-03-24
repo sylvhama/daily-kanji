@@ -7,8 +7,6 @@ interface KanjiProps {
 	translation: string;
 }
 
-const KANJI_SIZE = 256;
-
 export function Kanji({kanji, translation}: KanjiProps) {
 	const frame = useCurrentFrame();
 	const strokeDashoffset = interpolate(frame, [0, STROKE_DURATION], [500, 0]);
@@ -31,7 +29,7 @@ export function Kanji({kanji, translation}: KanjiProps) {
 		>
 			<svg
 				style={{
-					fontSize: KANJI_SIZE,
+					fontSize: 256,
 					overflow: 'visible',
 					strokeDasharray: 500,
 					strokeDashoffset,
