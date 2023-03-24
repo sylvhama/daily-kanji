@@ -19,6 +19,17 @@ generate the JSON we get a different kanji never seen before.
 // See https://www.remotion.dev/docs/ssr#render-a-video-using-nodejs-apis
 
 const start = async () => {
+	const inputProps = await promptGPT();
+
+	await renderVideo(inputProps);
+
+	// eslint-disable-next-line no-undef
+	process.exit(0);
+};
+
+start();
+
+async function promptGPT() {
 	// eslint-disable-next-line no-undef
 	const apiKey = process.env.OPENAI_API_KEY;
 
@@ -40,11 +51,23 @@ const start = async () => {
 
 	const {text} = completion.data.choices[0];
 	console.log(`JSON: ${text}`);
-	const inputProps = JSON.parse(text);
-	if (!validateJson(inputProps)) {
+	const json = JSON.parse(text);
+	if (!validateJson(json)) {
 		throw new Error('invalid JSON');
 	}
 
+	return json;
+}
+
+function validateJson(json) {
+	if (!json.kanji || !json.hiragana || !json.romaji || !json.translation) {
+		return false;
+	}
+
+	return true;
+}
+
+async function renderVideo(inputProps) {
 	const compositionId = 'Main';
 	const entry = './src/index';
 	console.log('Creating a Webpack bundle of the video');
@@ -60,6 +83,7 @@ const start = async () => {
 		throw new Error(`No composition with the ID ${compositionId} found.
   Review "${entry}" for the correct ID.`);
 	}
+
 	const outputLocation = `out/daily-kanji.mp4`;
 	console.log('Attempting to render:', outputLocation);
 	await renderMedia({
@@ -70,15 +94,4 @@ const start = async () => {
 		inputProps,
 	});
 	console.log('Render done!');
-	// eslint-disable-next-line no-undef
-	process.exit(0);
-};
-start();
-
-function validateJson(json) {
-	if (!json.kanji || !json.hiragana || !json.romaji || !json.translation) {
-		return false;
-	}
-
-	return true;
 }
