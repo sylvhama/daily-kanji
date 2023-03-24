@@ -9,13 +9,13 @@ import {
 } from 'remotion';
 import sakura from './sakura.png';
 
-import {loadFont} from '@remotion/google-fonts/RobotoMono';
+import {loadFont} from '@remotion/google-fonts/Delius';
 
 import {Cell} from './components/Cell';
 import {Kanji} from './components/Kanji';
 import {INTRO_DURATION, STROKE_DURATION, OPACITY_DURATION} from './consts';
 
-const {fontFamily} = loadFont();
+const {fontFamily: delius} = loadFont();
 
 const kanji = {
 	kanji: '昭',
@@ -43,7 +43,7 @@ export const Main: React.FC = () => {
 	return (
 		<AbsoluteFill
 			style={{
-				fontFamily: 'sans-serif',
+				fontFamily: delius,
 				color: 'white',
 				fontSize: 112,
 				background: 'rgba(43,46,47)',
@@ -71,7 +71,6 @@ export const Main: React.FC = () => {
 					display: 'grid',
 					justifyContent: 'center',
 					alignContent: 'flex-end',
-					fontFamily,
 					textTransform: 'uppercase',
 					opacity: opacityIntro,
 				}}
