@@ -6,6 +6,7 @@ import {
 	Audio,
 	Img,
 	staticFile,
+	getInputProps,
 } from 'remotion';
 import sakura from './sakura.png';
 
@@ -17,14 +18,21 @@ import {INTRO_DURATION, STROKE_DURATION, OPACITY_DURATION} from './consts';
 
 const {fontFamily: delius} = loadFont();
 
-const kanji = {
-	kanji: '昭',
-	hiragana: 'あきら',
-	romaji: 'a･ki･ra',
-	translation: 'shining',
-};
+interface Props {
+	kanji: string;
+	hiragana: string;
+	romaji: string;
+	translation: string;
+}
 
-export const Main: React.FC = () => {
+export function Main() {
+	const {
+		kanji = '昭',
+		hiragana = 'あきら',
+		romaji = 'a･ki･ra',
+		translation = 'shining',
+	} = getInputProps() as Props;
+
 	const frame = useCurrentFrame();
 	const opacityIntro = interpolate(
 		frame,
@@ -92,15 +100,15 @@ export const Main: React.FC = () => {
 				}}
 			>
 				<Cell gridArea="kanji" alignContent="flex-end">
-					<Kanji kanji={kanji.kanji} translation={kanji.translation} />
+					<Kanji kanji={kanji} translation={translation} />
 				</Cell>
 				<Cell gridArea="hiragana" opacity={opacityWords}>
-					{kanji.hiragana}
+					{hiragana}
 				</Cell>
 				<Cell gridArea="romaji" opacity={opacityWords}>
-					{kanji.romaji}
+					{romaji}
 				</Cell>
 			</Sequence>
 		</AbsoluteFill>
 	);
-};
+}
