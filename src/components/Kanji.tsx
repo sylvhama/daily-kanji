@@ -39,7 +39,7 @@ export function Kanji({kanji, translation}: KanjiProps) {
 				}}
 				stroke="#fff"
 				fill="#fff"
-				strokeWidth="2"
+				strokeWidth={fillOpacity >= 1 ? 0 : 2}
 			>
 				<text x="50%" dominantBaseline="middle" textAnchor="middle" y="50%">
 					{kanji}
