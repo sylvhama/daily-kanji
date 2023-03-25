@@ -10,14 +10,16 @@ import {
 } from 'remotion';
 import sakura from './sakura.png';
 
-import {loadFont} from '@remotion/google-fonts/Delius';
+import {loadFont as loadFontDelius} from '@remotion/google-fonts/Delius';
+import {loadFont as loadFontNoto} from '@remotion/google-fonts/NotoSerifJP';
 
 import {Cell} from './components/Cell';
 import {Kanji} from './components/Kanji';
 import {INTRO_DURATION, STROKE_DURATION, OPACITY_DURATION} from './consts';
 import type {Props} from './types';
 
-const {fontFamily: delius} = loadFont();
+const {fontFamily: delius} = loadFontDelius();
+const {fontFamily: noto} = loadFontNoto();
 
 export function Main() {
 	const {
@@ -45,10 +47,11 @@ export function Main() {
 	return (
 		<AbsoluteFill
 			style={{
-				fontFamily: delius,
+				fontFamily: `${delius}, ${noto}, serif`,
 				color: 'white',
 				fontSize: 112,
 				background: 'rgba(43,46,47)',
+				fontWeight: 'normal',
 			}}
 		>
 			{/** stephan, Public domain, via Wikimedia Commons */}
