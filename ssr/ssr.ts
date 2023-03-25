@@ -71,7 +71,7 @@ function validateJson(json: any) {
 
 async function renderVideo(inputProps: Props) {
 	const compositionId = 'Main';
-	const entry = './src/index';
+	const entry = 'src/index.ts';
 	console.log('Creating a Webpack bundle of the video');
 	const bundleLocation = await bundle(path.resolve(entry), () => undefined, {
 		webpackOverride: (config) => config,
