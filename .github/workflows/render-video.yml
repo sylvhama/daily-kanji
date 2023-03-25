@@ -1,4 +1,7 @@
 name: Render video
+on:
+  schedule:
+    - cron: "0 5 * * *"
 jobs:
   render:
     name: Render video and publish it
