@@ -1,3 +1,4 @@
+name: Render video
 jobs:
   render:
     name: Render video and publish it
