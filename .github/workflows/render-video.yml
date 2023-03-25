@@ -16,6 +16,8 @@ jobs:
         run: npm run ssr
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_PASSWORD: ${{ secrets.IG_PASSWORD }}
       - uses: actions/upload-artifact@v2
         with:
           name: out.mp4
