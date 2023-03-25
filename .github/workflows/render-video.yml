@@ -14,8 +14,8 @@ jobs:
       - uses: actions/setup-node@main
       - run: sudo apt update
       - run: sudo apt install ffmpeg
-      - run: npm run v
       - run: npm i
+      - run: npm run v
       - name: set env and start ssr
         run: npm run ssr
         env:
