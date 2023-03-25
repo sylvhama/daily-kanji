@@ -56,7 +56,7 @@ async function promptGPT() {
 	if (!validateJson(json)) {
 		throw new Error('invalid JSON');
 	}
-	console.log(`JSON: ${text}`);
+	console.log({...json});
 
 	return json;
 }
