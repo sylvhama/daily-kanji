@@ -51,11 +51,12 @@ async function promptGPT() {
 	});
 
 	const {text = ''} = completion.data.choices[0];
-	console.log(`JSON: ${text}`);
+	console.log(`Text: ${text}`);
 	const json = JSON.parse(text);
 	if (!validateJson(json)) {
 		throw new Error('invalid JSON');
 	}
+	console.log(`JSON: ${text}`);
 
 	return json;
 }
