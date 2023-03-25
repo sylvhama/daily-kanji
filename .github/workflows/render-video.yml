@@ -6,6 +6,9 @@ on:
 jobs:
   render:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
