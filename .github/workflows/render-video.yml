@@ -1,9 +1,10 @@
+name: Render video and publish it
 on:
   schedule:
     - cron: "0 5 * * *"
+  workflow_dispatch:
 jobs:
   render:
-    name: Render video and publish it
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
