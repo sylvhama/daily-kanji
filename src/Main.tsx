@@ -15,15 +15,9 @@ import {loadFont} from '@remotion/google-fonts/Delius';
 import {Cell} from './components/Cell';
 import {Kanji} from './components/Kanji';
 import {INTRO_DURATION, STROKE_DURATION, OPACITY_DURATION} from './consts';
+import type {Props} from './types';
 
 const {fontFamily: delius} = loadFont();
-
-interface Props {
-	kanji: string;
-	hiragana: string;
-	romaji: string;
-	translation: string;
-}
 
 export function Main() {
 	const {
