@@ -5,7 +5,7 @@ import {Configuration, OpenAIApi} from 'openai';
 import dotenv from 'dotenv';
 import {IgApiClient} from 'instagram-private-api';
 import fs from 'fs/promises';
-import type {Props} from '../src/types';
+import type {Props} from './src/types';
 
 dotenv.config();
 
@@ -23,13 +23,17 @@ const VIDEO_PATH = './out/daily-kanji.mp4';
 
 // See https://www.remotion.dev/docs/ssr#render-a-video-using-nodejs-apis
 
-export async function ssr() {
+async function ssr() {
 	const inputProps = await promptGPT();
 
 	await renderVideo(inputProps);
 
 	await postIGStory();
+
+	process.exit(0);
 }
+
+ssr();
 
 async function promptGPT() {
 	const apiKey = process.env.OPENAI_API_KEY;

@@ -7,7 +7,7 @@
 		"build": "remotion render Main out/daily-kanji.mp4",
 		"upgrade": "remotion upgrade",
 		"test": "eslint src --ext ts,tsx,js,jsx && tsc",
-		"ssr": "ts-node ssr/index.ts",
+		"ssr": "ts-node ssr.ts",
 		"v": "ts-node -vvv"
 	},
 	"repository": {},
