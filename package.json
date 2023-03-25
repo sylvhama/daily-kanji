@@ -22,6 +22,7 @@
 		"@remotion/cli": "3.3.44",
 		"@remotion/google-fonts": "^3.3.78",
 		"dotenv": "^16.0.3",
+		"instagram-private-api": "^1.45.3",
 		"openai": "^3.2.1",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",

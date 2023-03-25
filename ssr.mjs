@@ -3,6 +3,8 @@ import {getCompositions, renderMedia} from '@remotion/renderer';
 import path from 'path';
 import {Configuration, OpenAIApi} from 'openai';
 import dotenv from 'dotenv';
+import {IgApiClient} from 'instagram-private-api';
+import fs from 'fs/promises';
 
 dotenv.config();
 
@@ -16,6 +18,8 @@ Use the current timestamp as a seed in order to guarantee that each time I ask y
 generate the JSON we get a different kanji never seen before.
 `;
 
+const VIDEO_PATH = './out/daily-kanji.mp4';
+
 // See https://www.remotion.dev/docs/ssr#render-a-video-using-nodejs-apis
 
 const start = async () => {
@@ -23,14 +27,14 @@ const start = async () => {
 
 	await renderVideo(inputProps);
 
-	// eslint-disable-next-line no-undef
+	await postIGStory();
+
 	process.exit(0);
 };
 
 start();
 
 async function promptGPT() {
-	// eslint-disable-next-line no-undef
 	const apiKey = process.env.OPENAI_API_KEY;
 
 	if (!apiKey) {
@@ -84,7 +88,7 @@ async function renderVideo(inputProps) {
   Review "${entry}" for the correct ID.`);
 	}
 
-	const outputLocation = `out/daily-kanji.mp4`;
+	const outputLocation = VIDEO_PATH;
 	console.log('Attempting to render:', outputLocation);
 	await renderMedia({
 		composition,
@@ -94,4 +98,21 @@ async function renderVideo(inputProps) {
 		inputProps,
 	});
 	console.log('Render done!');
+}
+
+async function postIGStory() {
+	const ig = new IgApiClient();
+
+	ig.state.generateDevice(process.env.IG_USERNAME);
+	await ig.account.login(process.env.IG_USERNAME, process.env.IG_PASSWORD);
+
+	const video = await fs.readFile(VIDEO_PATH);
+	const coverImage = await fs.readFile('./cover.jpeg');
+
+	await ig.publish.video({
+		video,
+		coverImage,
+	});
+
+	console.log(`Video uploaded successfully!`);
 }
