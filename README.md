@@ -7,6 +7,8 @@
 - Kanji animation inspiration: [CodePen](https://codepen.io/lluisalen/pen/pozMmZx);
 - Gong sound source: [wikimedia](https://commons.wikimedia.org/wiki/File:Gong_or_bell_vibrant.ogg).
 
+I also wrote [an article](https://dev.to/sylvhama/gpt-is-my-new-bff-backend-for-frontends-1g03) about the idea behind this project.
+
 ## Commands
 
 **Install Dependencies**
