@@ -13,7 +13,7 @@
 	"repository": {},
 	"license": "UNLICENSED",
 	"devDependencies": {
-		"@remotion/eslint-config": "3.3.78",
+		"@remotion/eslint-config": "4.0.77",
 		"@types/react": "^18.0.26",
 		"@types/web": "^0.0.86",
 		"eslint": "^8.30.0",
@@ -23,14 +23,14 @@
 	},
 	"dependencies": {
 		"@netlify/functions": "^1.4.0",
-		"@remotion/cli": "3.3.78",
-		"@remotion/google-fonts": "3.3.78",
+		"@remotion/cli": "4.0.77",
+		"@remotion/google-fonts": "4.0.77",
 		"dotenv": "^16.0.3",
 		"instagram-private-api": "^1.45.3",
 		"openai": "^3.2.1",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
-		"remotion": "3.3.78"
+		"remotion": "4.0.77"
 	},
 	"packageManager": "npm@8.1.2"
 }
